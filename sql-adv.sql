@@ -1,5 +1,5 @@
         -- Creating table and inserting values:
-
+		use demo_database;
 CREATE TABLE EmployeeExample (
     EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
     Name VARCHAR(100),
@@ -54,6 +54,19 @@ OPEN EmployeCursor;
 
 FETCH FIRST FROM EmployeCursor;
      --UDF
+
+CREATE FUNCTION salary_above_50k ()
+RETURNS TABLE 
+AS 
+RETURN 
+  SELECT 
+    * 
+  FROM 
+    EmployeeExample 
+  WHERE 
+    Salary > 50000;
+
+SELECT * FROM salary_above_50k();
 
 
 
